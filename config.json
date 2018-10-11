@@ -1,0 +1,6 @@
+﻿{
+     "connectionString": "mongodb://localhost/PrintAppDB",
+    "secret": "123456ABCDEF"
+
+    
+}
