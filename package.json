@@ -8,7 +8,8 @@
         "url": "https://github.com/cornflourblue/node-mongo-registration-login-api.git"
     },
     "scripts": {
-        "start": "node ./bin/www"
+       // "start": "nodemon ./server.js",
+        "web": "npm start"
     },
     "dependencies": {
         "bcryptjs": "^2.4.3",
