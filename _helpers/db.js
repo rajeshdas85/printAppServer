@@ -1,7 +1,8 @@
 const config = require('config.json');
 const mongoose = require('mongoose');
-//mongoose.connect(config.connectionString);
 mongoose.connect(config.connectionString);
+//console.log(config.connectionString);
+//mongoose.connect('mongodb://printapp:print123@ds129321.mlab.com:29321/printappdb');
 mongoose.Promise = global.Promise;
 
 module.exports = {

@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const jwt = require('_helpers/jwt');
 const errorHandler = require('_helpers/error-handler');
 const fs = require('fs');
+const path=require('path');
 //-----------------------
 //require the express router
 //const router = express.Router();
@@ -26,8 +27,7 @@ app.use(cors());
 app.use(express.static('uploads'));
 
 //Serves all the request which includes /images in the url from Images folder
-app.use('/images', express.static(__dirname + '/images'));
-
+//app.use('/images', express.static(__dirname + '/images'));
 
 // use JWT auth to secure the api
 app.use(jwt());
@@ -68,12 +68,17 @@ app.use('/products', require('./products/product.controller'));
 // global error handler
 app.use(errorHandler);
 
+app.use(express.static(path.join(__dirname,'public')));
 
+app.get('*',(req,res)=>{
+    res.sendfile(path.join(__dirname,'public/index.html'));
+})
 //app.use('/images',express.static(path.resolve('/uploads')));
 
 
 // start server
-const port = process.env.port === 'production' ? 80 : 4000;
+//const port = process.env.port === 'production' ? 80 : 4000;
+const port = process.env.port || 8080;
 const server = app.listen(port, function () {
     console.log('Server listening on port ' + port);
 });
