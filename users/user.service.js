@@ -26,12 +26,12 @@ async function authenticate({ username, password }) {
 }
 
 async function getAll() {
-    console.log('return all users');
+   // console.log('return all users');
     return await User.find().select('-hash');
 }
 
 async function getById(id) {
-    console.log(id+"user found");
+   // console.log(id+"user found");
     return await User.findById(id).select('-hash');
 }
 
@@ -45,7 +45,7 @@ async function create(userParam) {
     
     // hash password
     if (userParam.password) {
-        console.log('addeded'+user);
+       // console.log('addeded'+user);
         user.hash = bcrypt.hashSync(userParam.password, 10);
     }
 
